@@ -13,7 +13,7 @@ This project involves a comprehensive analysis of Netflix's movies and TV shows 
 - Explore and categorize content based on specific criteria and keywords.
 
 ## Dataset
-(https://github.com/user-attachments/assets/845cd0e0-4269-412f-81b8-0e859ce315bf)
+[](https://github.com/user-attachments/assets/845cd0e0-4269-412f-81b8-0e859ce315bf)
 
 The data for this project is sourced from the Kaggle dataset:
 
