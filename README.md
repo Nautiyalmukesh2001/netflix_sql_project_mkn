@@ -85,7 +85,7 @@ SELECT type,COUNT(*) AS total_content
 FROM netflix
 GROUP BY type;
 ```
-➡️ **Insight**: Helps understand platform content strategy.
+➡️ **Objective**: Determine the distribution of content types on Netflix. Helps understand platform content strategy.
 
 <img src="https://github.com/user-attachments/assets/469c27bf-45e8-4fc5-9f81-d49ca2700426" alt="Image description" width="400" height="150"/>
 
@@ -104,7 +104,7 @@ GROUP BY type,rating
 )
 WHERE ranking = 1;
 ```
-➡️ **Insight**: Shows what content ratings dominate per type.
+➡️ **Objective**: Identify the most frequently occurring rating for each type of content. Shows what content ratings dominate per type.
 
 <img src="https://github.com/user-attachments/assets/6eff94bd-99d4-4c5f-8583-2de244f76d6d" alt="Image description" width="400" height="150"/>
 
@@ -118,6 +118,7 @@ SELECT *
 FROM netflix
 WHERE type = 'Movie' and release_year = 2020
 ```
+➡️ **Objective**: Retrieve all movies released in a specific year.
 
 <img src="https://github.com/user-attachments/assets/9571eda9-8ffb-423c-a591-abfea89a800c" alt="Image description" width="800" height="150"/>
 
@@ -135,6 +136,7 @@ LIMIT 5;
 
 -- NOTE: column country has concat value so to separate the countries i use this -> UNNEST(STRING_TO_ARRAY(country,','))
 ```
+➡️ **Objective**: Identify the top 5 countries with the highest number of content items.
 
 <img src="https://github.com/user-attachments/assets/80d99e6a-1d3c-4faa-8d4a-4dba5eda7a5d" alt="Image description" width="350" height="150"/>
 
@@ -152,6 +154,8 @@ LIMIT 1;
 
 -- NOTE: In PostgreSQL (and some other SQL engines) By default, ORDER BY ... DESC puts NULL values first. Because NULL is considered unknown and not comparable — it doesn't have a defined position unless you tell SQL explicitly.
 ```
+➡️ **Objective**: Find the movie with the longest duration.
+
 
 <img src="https://github.com/user-attachments/assets/ecbb1422-313d-48cf-ab4b-a2c967c12381" alt="Image description" width="800" height="150"/>
 
@@ -165,6 +169,8 @@ SELECT *
 from netflix
 WHERE TO_DATE(date_added,'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 YEARS';
 ```
+➡️ **Objective**: Retrieve content added to Netflix in the last 5 years.
+
 
 <img src="https://github.com/user-attachments/assets/772048ab-250d-4a51-af8b-6907a1dbf3a7" alt="Image description" width="600" height="150"/>
 
@@ -183,6 +189,8 @@ SELECT *
 FROM netflix
 WHERE director ILIKE '%Rajiv Chilaka%';
 ```
+➡️ **Objective**: List all content directed by 'Rajiv Chilaka'.
+
 
 <img src="https://github.com/user-attachments/assets/91c88aa6-2994-47d5-821e-976e326c3d7a" alt="Image description" width="400" height="150"/>
 
@@ -199,6 +207,7 @@ WHERE type = 'TV Show' AND SPLIT_PART(duration, ' ', 1)::INT > 5;
 SELECT * FROM netflix
 WHERE type = 'TV Show' AND (SPLIT_PART(duration,' ',2) ILIKE '%Seasons%' AND SPLIT_PART(duration,' ',1)::INT > 5);
 ```
+➡️ **Objective**: Identify TV shows with more than 5 seasons.
 
 <img src="https://github.com/user-attachments/assets/958c8218-9113-4891-98a0-11aef3a6a67d" alt="Image description" width="400" height="150"/>
 
@@ -216,6 +225,8 @@ SELECT UNNEST(STRING_TO_ARRAY(listed_in, ',')) AS genre, COUNT(show_id)
 FROM netflix 
 GROUP BY 1;
 ```
+➡️ **Objective**: Count the number of content items in each genre.
+
 
 <img src="https://github.com/user-attachments/assets/79cace2f-3f15-444c-81cd-a3bcbd0d1a78" alt="Image description" width="400" height="250"/>
 
@@ -235,6 +246,8 @@ ORDER BY avg_content_per_month DESC
 LIMIT 5;
 
 ```
+➡️ **Objective**: Calculate and rank years by the average number of content releases by India.
+
 
 <img src="https://github.com/user-attachments/assets/10d3a9cb-bc80-4b2f-85d5-2df06b354216" alt="Image description" width="400" height="250"/>
 
@@ -246,6 +259,8 @@ LIMIT 5;
 
 SELECT * FROM netflix WHERE listed_in LIKE '%Documentaries';
 ```
+➡️ **Objective**: Retrieve all movies classified as documentaries.
+
 
 <img src="https://github.com/user-attachments/assets/5d4b2d99-9541-455c-b08b-3d82e61460c0" alt="Image description" width="800" height="250"/>
 
@@ -257,6 +272,8 @@ SELECT * FROM netflix WHERE listed_in LIKE '%Documentaries';
 
 SELECT * FROM netflix WHERE director IS NULL;
 ```
+➡️ **Objective**: List content that does not have a director.
+
 
 <img src="https://github.com/user-attachments/assets/1a185c45-ad35-494b-909e-029a5a430135" alt="Image description" width="600" height="300"/>
 
@@ -271,6 +288,8 @@ FROM netflix
 WHERE (type = 'Movie' AND casts ILIKE '%Salman Khan%') 
 AND release_year >= EXTRACT(YEAR FROM CURRENT_DATE - INTERVAL '10 YEARS')
 ```
+➡️ **Objective**: Count the number of movies featuring 'Salman Khan' in the last 10 years.
+
 
 <img src="https://github.com/user-attachments/assets/e7040747-44ba-46d6-b707-f12c416ef400" alt="Image description" width="400" height="150"/>
 
@@ -287,6 +306,8 @@ GROUP BY 1
 ORDER BY COUNT(*) DESC
 LIMIT 10;
 ```
+➡️ **Objective**: Identify the top 10 actors with the most appearances in Indian-produced movies.
+
 
 <img src="https://github.com/user-attachments/assets/8c893067-103a-45b8-ab8e-283edb554fd7" alt="Image description" width="500" height="300"/>
 
@@ -321,6 +342,8 @@ GROUP BY content_categorize
 
 -- we can solve this using CTE also
 ```
+➡️ **Objective**: Categorize content as 'Bad' if it contains 'kill' or 'violence' and 'Good' otherwise. Count the number of items in each category.
+
 
 <img src="https://github.com/user-attachments/assets/eafd1218-4bce-4c80-81ea-b781cb290317" alt="Image description" width="400" height="150"/>
 
@@ -328,11 +351,16 @@ GROUP BY content_categorize
 
 ## 🔍 Findings and Conclusion
 
-- 🎥 **Content Mix**: Movies dominate the catalog, but TV shows are steadily growing.
-- 🌎 **Top Countries**: US, India, and UK lead in content production.
-- 🏆 **Popular Ratings**: Most content is family-friendly (TV-MA, TV-14).
-- 🧠 **Meta Gaps**: Missing director data and ambiguous cast fields need data cleaning.
-- 🎯 **Actionable Insight**: Genre trends and keyword flags help shape content strategy.
+This analysis offers a well-rounded understanding of Netflix's content library, highlighting key patterns and actionable insights:
+
+- 🎥 **Content Distribution**: Movies form the majority of the catalog, but TV shows are steadily increasing, reflecting a balanced content mix.
+- 🌎 **Geographical Insights**: The United States, India, and the United Kingdom lead in content production. India also shows notable average annual content additions, indicating strong regional engagement.
+- 🏆 **Ratings Breakdown**: Most titles fall under family-friendly ratings like TV-MA and TV-14, giving insight into the platform’s target audience.
+- 🧠 **Data Quality**: Gaps such as missing director fields and ambiguous cast entries suggest areas for data improvement.
+- 🧩 **Content Categorization**: Analyzing keywords and genres enables a better understanding of the types of content available and popular trends.
+- 🎯 **Strategic Value**: These insights can support content acquisition, recommendation algorithms, and broader content strategy planning.
+
+Overall, this analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
 
 ---
 
