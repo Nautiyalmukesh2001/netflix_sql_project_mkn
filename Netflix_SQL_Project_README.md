@@ -126,7 +126,7 @@ LIMIT 5;
 -- NOTE: column country has concat value so to separate the countries i use this -> UNNEST(STRING_TO_ARRAY(country,','))
 ```
 
-<img src="https://github.com/user-attachments/assets/80d99e6a-1d3c-4faa-8d4a-4dba5eda7a5d" alt="Image description" width="250" height="150"/>
+<img src="https://github.com/user-attachments/assets/80d99e6a-1d3c-4faa-8d4a-4dba5eda7a5d" alt="Image description" width="350" height="150"/>
 
 ---
 
@@ -143,7 +143,7 @@ LIMIT 1;
 -- NOTE: In PostgreSQL (and some other SQL engines) By default, ORDER BY ... DESC puts NULL values first. Because NULL is considered unknown and not comparable — it doesn't have a defined position unless you tell SQL explicitly.
 ```
 
-<img src="https://github.com/user-attachments/assets/ecbb1422-313d-48cf-ab4b-a2c967c12381" alt="Image description" width="250" height="150"/>
+<img src="https://github.com/user-attachments/assets/ecbb1422-313d-48cf-ab4b-a2c967c12381" alt="Image description" width="500" height="150"/>
 
 ---
 
