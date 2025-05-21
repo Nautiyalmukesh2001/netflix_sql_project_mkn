@@ -109,7 +109,7 @@ FROM netflix
 WHERE type = 'Movie' and release_year = 2020
 ```
 
-<img src="https://github.com/user-attachments/assets/9571eda9-8ffb-423c-a591-abfea89a800c" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/9571eda9-8ffb-423c-a591-abfea89a800c" alt="Image description" width="800" height="150"/>
 
 ---
 
