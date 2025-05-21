@@ -237,7 +237,7 @@ LIMIT 5;
 SELECT * FROM netflix WHERE listed_in LIKE '%Documentaries';
 ```
 
-<img src="https://github.com/user-attachments/assets/5d4b2d99-9541-455c-b08b-3d82e61460c0" alt="Image description" width="400" height="250"/>
+<img src="https://github.com/user-attachments/assets/5d4b2d99-9541-455c-b08b-3d82e61460c0" alt="Image description" width="800" height="250"/>
 
 ---
 
@@ -248,7 +248,7 @@ SELECT * FROM netflix WHERE listed_in LIKE '%Documentaries';
 SELECT * FROM netflix WHERE director IS NULL;
 ```
 
-<img src="https://github.com/user-attachments/assets/1a185c45-ad35-494b-909e-029a5a430135" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/1a185c45-ad35-494b-909e-029a5a430135" alt="Image description" width="600" height="300"/>
 
 ---
 
