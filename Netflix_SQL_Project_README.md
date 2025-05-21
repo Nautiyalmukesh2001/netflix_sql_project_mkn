@@ -278,7 +278,7 @@ ORDER BY COUNT(*) DESC
 LIMIT 10;
 ```
 
-<img src="https://github.com/user-attachments/assets/8c893067-103a-45b8-ab8e-283edb554fd7" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/8c893067-103a-45b8-ab8e-283edb554fd7" alt="Image description" width="500" height="300"/>
 
 ---
 
