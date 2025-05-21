@@ -69,9 +69,12 @@ Each of the following problems is solved using SQL with optimized queries and re
 
 ### 1. 📊 Distribution of Movies vs TV Shows
 ```sql
-SELECT type, COUNT(*) FROM netflix GROUP BY type;
+SELECT type,COUNT(*) AS total_content
+FROM netflix
+GROUP BY type;
 ```
 ➡️ **Insight**: Helps understand platform content strategy.
+<img src="[path_or_URL_to_image](https://github.com/user-attachments/assets/469c27bf-45e8-4fc5-9f81-d49ca2700426)" alt="Image description" width="400" height="300"/>
 
 ---
 
