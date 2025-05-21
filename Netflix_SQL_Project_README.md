@@ -20,9 +20,19 @@
 
 ## 📌 Overview
 
-This project involves analyzing the Netflix dataset using **PostgreSQL** to answer **business-relevant questions** around content types, genres, release years, popular countries, actors, and more.  
+This project presents a comprehensive analysis of Netflix’s movies and TV shows dataset using **PostgreSQL**. The primary objective is to extract meaningful insights and answer business-relevant questions related to:
 
-By querying the dataset effectively, we reveal **content trends** and **strategic insights** valuable for stakeholders in the streaming and entertainment industry.
+- 📺 Content types  
+- 🎭 Genres  
+- 📅 Release years  
+- 🌍 Popular countries  
+- 🎬 Top actors  
+- ➕ And more...
+
+By leveraging SQL to query and explore the dataset, the project uncovers content trends and strategic insights that can guide stakeholders in the **streaming and entertainment industry**.
+
+This README outlines the project’s goals, business challenges, methodologies, key findings, and conclusions.
+
 
 ---
 
