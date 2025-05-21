@@ -75,7 +75,7 @@ GROUP BY type;
 ```
 ➡️ **Insight**: Helps understand platform content strategy.
 
-<img src="https://github.com/user-attachments/assets/469c27bf-45e8-4fc5-9f81-d49ca2700426" alt="Image description" width="300" height="150"/>
+<img src="https://github.com/user-attachments/assets/469c27bf-45e8-4fc5-9f81-d49ca2700426" alt="Image description" width="400" height="150"/>
 
 ---
 
