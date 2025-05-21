@@ -207,7 +207,7 @@ FROM netflix
 GROUP BY 1;
 ```
 
-<img src="https://github.com/user-attachments/assets/79cace2f-3f15-444c-81cd-a3bcbd0d1a78" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/79cace2f-3f15-444c-81cd-a3bcbd0d1a78" alt="Image description" width="400" height="250"/>
 
 ---
 
@@ -226,7 +226,7 @@ LIMIT 5;
 
 ```
 
-<img src="https://github.com/user-attachments/assets/10d3a9cb-bc80-4b2f-85d5-2df06b354216" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/10d3a9cb-bc80-4b2f-85d5-2df06b354216" alt="Image description" width="400" height="250"/>
 
 ---
 
@@ -237,7 +237,7 @@ LIMIT 5;
 SELECT * FROM netflix WHERE listed_in LIKE '%Documentaries';
 ```
 
-<img src="https://github.com/user-attachments/assets/5d4b2d99-9541-455c-b08b-3d82e61460c0" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/5d4b2d99-9541-455c-b08b-3d82e61460c0" alt="Image description" width="400" height="250"/>
 
 ---
 
