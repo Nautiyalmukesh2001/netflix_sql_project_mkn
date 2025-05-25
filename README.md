@@ -376,7 +376,7 @@ LIMIT 10;
 ➡️ **Objective**: Helps uncover strong creative partnerships on Netflix.
 
 
-<img src="https://github.com/user-attachments/assets/8890ce7b-48ed-494d-82d0-d3958105fc90)" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/8890ce7b-48ed-494d-82d0-d3958105fc90" alt="Image description" width="400" height="150"/>
 
 ---
 
@@ -438,7 +438,7 @@ ORDER BY type, genre_count DESC;
 ➡️ **Objective**: Expands on genre distribution but filters by type.
 
 
-<img src="https://github.com/user-attachments/assets/39211110-fb9e-46b9-b4b8-3de6eb938ab0" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/39211110-fb9e-46b9-b4b8-3de6eb938ab0" alt="Image description" width="800" height="150"/>
 
 ---
 
