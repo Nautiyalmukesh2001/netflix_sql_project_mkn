@@ -462,7 +462,7 @@ LIMIT 10;
 ➡️ **Objective**: Find consistently active and prolific directors.
 
 
-<img src="https://github.com/user-attachments/assets/d434ec06-efef-4f67-9764-580ad7b4e05e" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/d434ec06-efef-4f67-9764-580ad7b4e05e" alt="Image description" width="600" height="400"/>
 
 
 ---
@@ -484,7 +484,7 @@ LIMIT 10;
 ➡️ **Objective**: Cross-analyze country and duration.
 
 
-<img src="https://github.com/user-attachments/assets/0676e46c-9b02-48ae-9c88-7d061ff44432" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/0676e46c-9b02-48ae-9c88-7d061ff44432" alt="Image description" width="600" height="400"/>
 
 
 ---
@@ -505,7 +505,7 @@ ORDER BY year_added;
 ➡️ **Objective**: Time-series view of Netflix’s content growth.
 
 
-<img src="https://github.com/user-attachments/assets/b43be6bb-7893-4ea0-9659-5b3aec602cdd" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/b43be6bb-7893-4ea0-9659-5b3aec602cdd" alt="Image description" width="600" height="400"/>
 
 
 ---
@@ -537,7 +537,7 @@ LIMIT 10;
 ➡️ **Objective**: Performs a co-appearance (network-style) analysis from the casts column.
 
 
-<img src="https://github.com/user-attachments/assets/e361da21-06d6-4509-af52-f49998d0a374" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/e361da21-06d6-4509-af52-f49998d0a374" alt="Image description" width="600" height="400"/>
 
 
 ---
@@ -559,7 +559,7 @@ GROUP BY production_type;
 ➡️ **Objective**: Analyzes global collaborations in country.
 
 
-<img src="https://github.com/user-attachments/assets/026f149f-b44e-4dc2-b392-3d32b103bee5" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/026f149f-b44e-4dc2-b392-3d32b103bee5" alt="Image description" width="600" height="400"/>
 
 ---
 
@@ -585,7 +585,7 @@ ORDER BY decade, genre_count DESC;
 ➡️ **Objective**: Shows how genre preferences evolved over time.
 
 
-<img src="https://github.com/user-attachments/assets/d3fd8629-d7cb-45ef-a09a-18d7f3419b28" alt="Image description" width="400" height="150"/>
+<img src="https://github.com/user-attachments/assets/d3fd8629-d7cb-45ef-a09a-18d7f3419b28" alt="Image description" width="600" height="400"/>
 
 ---
 
