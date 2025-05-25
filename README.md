@@ -376,7 +376,7 @@ LIMIT 10;
 ➡️ **Objective**: Helps uncover strong creative partnerships on Netflix.
 
 
-<img src="https://github.com/user-attachments/assets/8890ce7b-48ed-494d-82d0-d3958105fc90" alt="Image description" width="600" height="150"/>
+<img src="https://github.com/user-attachments/assets/8890ce7b-48ed-494d-82d0-d3958105fc90" alt="Image description" width="400" height="400"/>
 
 ---
 
