@@ -14,7 +14,7 @@
 - [📁 Dataset](#-dataset)
 - [🗂️ Schema](#-schema)
 - [💡 Business Problems & Solutions](#-business-problems--solutions)
-- [🔍 Key Insights & Findings](#-findings-and-conclusion)
+- [🔍 Findings and Conclusion](#-findings-and-conclusion)
 
 ---
 
@@ -28,11 +28,6 @@ This project presents a comprehensive analysis of Netflix’s movies and TV show
 - 🌍 Popular countries  
 - 🎬 Top actors  
 - ➕ And more...
-
-By leveraging SQL to query and explore the dataset, the project uncovers content trends and strategic insights that can guide stakeholders in the **streaming and entertainment industry**.
-
-This README outlines the project’s goals, business challenges, methodologies, key findings, and conclusions.
-
 
 ---
 
@@ -49,7 +44,7 @@ This README outlines the project’s goals, business challenges, methodologies, 
 ## 📁 Dataset
 
 - Source: [Netflix Shows on Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=download)
-
+  
 ---
 
 ## 🗂️ Schema
@@ -70,6 +65,22 @@ CREATE TABLE netflix (
     description  VARCHAR(250)
 );
 ```
+
+| Column        | Description                                 |
+|---------------|---------------------------------------------|
+| show_id       | Unique identifier                           |
+| type          | 'Movie' or 'TV Show'                        |
+| title         | Title of the content                        |
+| director      | Director(s) of the content                  |
+| casts         | Cast members                                |
+| country       | Country of production                       |
+| date_added    | Date content was added to Netflix           |
+| release_year  | Year of content release                     |
+| rating        | Age rating (e.g., PG, TV-MA)                |
+| duration      | Runtime or number of seasons                |
+| listed_in     | Genre/category                              |
+| description   | Brief summary                               |
+
 
 ---
 
@@ -349,16 +360,250 @@ GROUP BY content_categorize
 
 ---
 
+### 16. 🎬 Top Actor-Director Collaborations
+```sql
+-- What are the top 10 most frequent pairings of actor/actress and director (cast-director duo) in the dataset
+SELECT 
+    director, 
+    unnest(string_to_array(casts, ',')) AS actor,
+    COUNT(*) AS collaboration_count
+FROM netflix
+WHERE director IS NOT NULL AND casts IS NOT NULL
+GROUP BY director, actor
+ORDER BY collaboration_count DESC
+LIMIT 10;
+```
+➡️ **Objective**: Helps uncover strong creative partnerships on Netflix.
+
+
+<img src="https://github.com/user-attachments/assets/8890ce7b-48ed-494d-82d0-d3958105fc90)" alt="Image description" width="400" height="150"/>
+
+---
+
+### 17. 2. ⏱️ Average Duration: Movies vs TV Shows
+```sql
+-- Find the average duration of movies versus TV shows (e.g., movie length in minutes vs. number of seasons).
+
+SELECT 
+    type,
+    AVG(CAST(split_part(duration, ' ', 1) AS INTEGER)) AS avg_duration
+FROM netflix
+WHERE duration IS NOT NULL
+GROUP BY type;
+
+```
+➡️ **Objective**: Highlights content length differences by type.
+
+
+<img src="https://github.com/user-attachments/assets/6e2c18fe-9ca6-44fe-ad24-cb626b0eb613" alt="Image description" width="400" height="150"/>
+
+
+---
+
+### 18. 📆 Peak Month for Content Addition
+```sql
+-- Which month(s) saw the highest number of new additions to Netflix?
+
+SELECT 
+    TO_CHAR(TO_DATE(date_added, 'Month DD, YYYY'), 'Month') AS month,
+    COUNT(*) AS total_added
+FROM netflix
+WHERE date_added IS NOT NULL
+GROUP BY month
+ORDER BY total_added DESC
+LIMIT 1;
+
+```
+➡️ **Objective**: Temporal trend analysis based on date_added, useful for seasonal strategies.
+
+
+<img src="https://github.com/user-attachments/assets/3e1582a4-652b-4efe-9698-b5e972a57acb" alt="Image description" width="400" height="150"/>
+
+---
+
+
+### 19.🎭 Top Genres by Content Type
+```sql
+-- Identify the most common genres for each content type (Movie or TV Show).
+
+SELECT 
+    type,
+    TRIM(unnest(string_to_array(listed_in, ','))) AS genre,
+    COUNT(*) AS genre_count
+FROM netflix
+GROUP BY type, genre
+ORDER BY type, genre_count DESC;
+
+```
+➡️ **Objective**: Expands on genre distribution but filters by type.
+
+
+<img src="https://github.com/user-attachments/assets/39211110-fb9e-46b9-b4b8-3de6eb938ab0" alt="Image description" width="400" height="150"/>
+
+---
+
+
+### 20. 🎬 Prolific Directors by Volume
+```sql
+-- Which directors have the highest average IMDb-style "volume"—based on number of shows/movies and average release year?
+
+SELECT 
+    director,
+    COUNT(*) AS total_titles,
+    AVG(release_year) AS avg_release_year
+FROM netflix
+WHERE director IS NOT NULL
+GROUP BY director
+HAVING COUNT(*) > 3
+ORDER BY total_titles DESC
+LIMIT 10;
+
+```
+➡️ **Objective**: Find consistently active and prolific directors.
+
+
+<img src="https://github.com/user-attachments/assets/d434ec06-efef-4f67-9764-580ad7b4e05e" alt="Image description" width="400" height="150"/>
+
+
+---
+
+### 21. 🌍 Countries with Longest Average Content
+```sql
+-- Which countries produce the longest average content duration?
+
+SELECT 
+    country,
+    AVG(CAST(split_part(duration, ' ', 1) AS INTEGER)) AS avg_duration
+FROM netflix
+WHERE country IS NOT NULL AND duration IS NOT NULL
+GROUP BY country
+ORDER BY avg_duration DESC
+LIMIT 10;
+
+```
+➡️ **Objective**: Cross-analyze country and duration.
+
+
+<img src="https://github.com/user-attachments/assets/0676e46c-9b02-48ae-9c88-7d061ff44432" alt="Image description" width="400" height="150"/>
+
+
+---
+
+### 22. 📈 Year-over-Year Content Addition
+```sql
+-- How has the number of new content additions changed year-over-year from 2010 to present?
+
+SELECT 
+    EXTRACT(YEAR FROM TO_DATE(date_added, 'Month DD, YYYY')) AS year_added,
+    COUNT(*) AS content_added
+FROM netflix
+WHERE date_added IS NOT NULL
+GROUP BY year_added
+ORDER BY year_added;
+
+```
+➡️ **Objective**: Time-series view of Netflix’s content growth.
+
+
+<img src="https://github.com/user-attachments/assets/b43be6bb-7893-4ea0-9659-5b3aec602cdd" alt="Image description" width="400" height="150"/>
+
+
+---
+
+### 23. 🎥 Frequent Actor Pairings
+```sql
+-- Which actors appear together most frequently in the same content?
+
+WITH expanded_cast AS (
+    SELECT show_id, TRIM(unnest(string_to_array(casts, ','))) AS actor
+    FROM netflix
+    WHERE casts IS NOT NULL
+),
+actor_pairs AS (
+    SELECT 
+        a1.show_id,
+        LEAST(a1.actor, a2.actor) AS actor1,
+        GREATEST(a1.actor, a2.actor) AS actor2
+    FROM expanded_cast a1
+    JOIN expanded_cast a2 ON a1.show_id = a2.show_id AND a1.actor < a2.actor
+)
+SELECT actor1, actor2, COUNT(*) AS appearances
+FROM actor_pairs
+GROUP BY actor1, actor2
+ORDER BY appearances DESC
+LIMIT 10;
+
+```
+➡️ **Objective**: Performs a co-appearance (network-style) analysis from the casts column.
+
+
+<img src="https://github.com/user-attachments/assets/e361da21-06d6-4509-af52-f49998d0a374" alt="Image description" width="400" height="150"/>
+
+
+---
+
+### 24. 🌐 Single vs Multi-Country Productions
+```sql
+-- What percentage of Netflix content is localized to a single country vs. co-produced by multiple countries?
+
+SELECT 
+    CASE 
+        WHEN country LIKE '%,%' THEN 'Multi-Country'
+        ELSE 'Single Country'
+    END AS production_type,
+    COUNT(*) AS content_count
+FROM netflix
+GROUP BY production_type;
+
+```
+➡️ **Objective**: Analyzes global collaborations in country.
+
+
+<img src="https://github.com/user-attachments/assets/026f149f-b44e-4dc2-b392-3d32b103bee5" alt="Image description" width="400" height="150"/>
+
+---
+
+### 25. 📚 Popular Genres by Decade
+```sql
+-- Group content based on decade of release (e.g., 1980s, 1990s, etc.) and find the most popular genres for each decade.
+
+WITH decade_data AS (
+    SELECT *,
+           (release_year / 10) * 10 AS decade
+    FROM netflix
+    WHERE release_year IS NOT NULL
+)
+SELECT 
+    decade,
+    TRIM(unnest(string_to_array(listed_in, ','))) AS genre,
+    COUNT(*) AS genre_count
+FROM decade_data
+GROUP BY decade, genre
+ORDER BY decade, genre_count DESC;
+
+```
+➡️ **Objective**: Shows how genre preferences evolved over time.
+
+
+<img src="https://github.com/user-attachments/assets/d3fd8629-d7cb-45ef-a09a-18d7f3419b28" alt="Image description" width="400" height="150"/>
+
+---
+
+
 ## 🔍 Findings and Conclusion
 
 This analysis offers a well-rounded understanding of Netflix's content library, highlighting key patterns and actionable insights:
 
-- 🎥 **Content Distribution**: Movies form the majority of the catalog, but TV shows are steadily increasing, reflecting a balanced content mix.
-- 🌎 **Geographical Insights**: The United States, India, and the United Kingdom lead in content production. India also shows notable average annual content additions, indicating strong regional engagement.
-- 🏆 **Ratings Breakdown**: Most titles fall under family-friendly ratings like TV-MA and TV-14, giving insight into the platform’s target audience.
-- 🧠 **Data Quality**: Gaps such as missing director fields and ambiguous cast entries suggest areas for data improvement.
-- 🧩 **Content Categorization**: Analyzing keywords and genres enables a better understanding of the types of content available and popular trends.
-- 🎯 **Strategic Value**: These insights can support content acquisition, recommendation algorithms, and broader content strategy planning.
+- 🎥 **Content Type Distribution**: Movies dominate the platform but TV shows are on the rise.
+- 🌎 **Geographic Trends**: The U.S., India, and the UK lead in content volume, with India showing strong growth.
+- 📆 **Temporal Patterns**: New additions peak in certain months—useful for release strategy planning.
+- 🏷️ **Genre Preferences**: Different genres trend in different decades and formats.
+- 🎭 **Creative Collaborations**: Frequent actor-director duos highlight strong production patterns.
+- ⏱️ **Content Duration**: TV shows vary in season length while movies differ by country runtime.
+- 🧑‍🤝‍🧑 **Actor Networks**: Popular actor pairings offer casting insights.
+- 🌐 **Globalization**: Local vs. multi-country productions help understand content localization.
+- 🔍 **Data Quality Gaps**: Missing fields in director/casts highlight metadata improvement areas.
+
 
 Overall, this analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
 
